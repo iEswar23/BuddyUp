@@ -1,0 +1,722 @@
+[
+  {
+    "id": "p01",
+    "name": "Ananya Rao",
+    "age": 27,
+    "city": "Bengaluru",
+    "neighborhood": "Indiranagar",
+    "latitude": 12.9784,
+    "longitude": 77.6408,
+    "occupation": "UX designer at a fintech",
+    "bio": "Moved from Mysuru last year. Weekend sketcher, filter-coffee loyalist, looking for a Sunday trek crew.",
+    "interests": [
+      "Hiking",
+      "Painting",
+      "Coffee",
+      "Photography",
+      "Indie music"
+    ],
+    "lastActiveMinutesAgo": 5,
+    "wavesBack": true
+  },
+  {
+    "id": "p02",
+    "name": "Rohan Mehta",
+    "age": 31,
+    "city": "Bengaluru",
+    "neighborhood": "Koramangala",
+    "latitude": 12.9352,
+    "longitude": 77.6245,
+    "occupation": "Product manager",
+    "bio": "Ex-quizzer, current board-game hoarder. I host a Catan night most Fridays and always need a fourth.",
+    "interests": [
+      "Board games",
+      "Startups",
+      "Chess",
+      "Podcasts",
+      "Coffee"
+    ],
+    "lastActiveMinutesAgo": 22,
+    "wavesBack": true
+  },
+  {
+    "id": "p03",
+    "name": "Kavya Iyer",
+    "age": 26,
+    "city": "Bengaluru",
+    "neighborhood": "Jayanagar",
+    "latitude": 12.925,
+    "longitude": 77.5838,
+    "occupation": "Data analyst",
+    "bio": "Carnatic music by morning, indie gigs by night. Trying to finish 30 books this year (currently at 19).",
+    "interests": [
+      "Reading",
+      "Indie music",
+      "Writing",
+      "Coffee",
+      "Yoga"
+    ],
+    "lastActiveMinutesAgo": 3,
+    "wavesBack": true
+  },
+  {
+    "id": "p04",
+    "name": "Arjun Nair",
+    "age": 29,
+    "city": "Bengaluru",
+    "neighborhood": "HSR Layout",
+    "latitude": 12.9116,
+    "longitude": 77.6474,
+    "occupation": "Backend engineer",
+    "bio": "Cycling to Nandi Hills at 5am is my idea of fun. Also make a mean Kerala fish curry.",
+    "interests": [
+      "Cycling",
+      "Cooking",
+      "Tech",
+      "Running",
+      "Photography"
+    ],
+    "lastActiveMinutesAgo": 48,
+    "wavesBack": false
+  },
+  {
+    "id": "p05",
+    "name": "Sneha Kulkarni",
+    "age": 24,
+    "city": "Bengaluru",
+    "neighborhood": "Malleshwaram",
+    "latitude": 13.0035,
+    "longitude": 77.5709,
+    "occupation": "Architecture grad student",
+    "bio": "New in Bangalore for my master's. Looking for people to explore old bookstores and darshinis with.",
+    "interests": [
+      "Reading",
+      "Photography",
+      "Travel",
+      "Painting",
+      "Coffee"
+    ],
+    "lastActiveMinutesAgo": 12,
+    "wavesBack": true
+  },
+  {
+    "id": "p06",
+    "name": "Vikram Shetty",
+    "age": 34,
+    "city": "Bengaluru",
+    "neighborhood": "Whitefield",
+    "latitude": 12.9698,
+    "longitude": 77.75,
+    "occupation": "Engineering manager",
+    "bio": "Dad of a golden retriever named Biscuit. Weekend cricket in Whitefield — we're always short a bowler.",
+    "interests": [
+      "Cricket",
+      "Dogs",
+      "Running",
+      "Movies",
+      "Tech"
+    ],
+    "lastActiveMinutesAgo": 130,
+    "wavesBack": true
+  },
+  {
+    "id": "p07",
+    "name": "Meera Joseph",
+    "age": 28,
+    "city": "Bengaluru",
+    "neighborhood": "Bellandur",
+    "latitude": 12.9257,
+    "longitude": 77.6762,
+    "occupation": "Pastry chef",
+    "bio": "I bake way too much for one person. Will trade croissants for good conversation.",
+    "interests": [
+      "Baking",
+      "Cooking",
+      "Coffee",
+      "Gardening",
+      "Movies"
+    ],
+    "lastActiveMinutesAgo": 26,
+    "wavesBack": true
+  },
+  {
+    "id": "p08",
+    "name": "Siddharth Bhat",
+    "age": 25,
+    "city": "Bengaluru",
+    "neighborhood": "Hebbal",
+    "latitude": 13.0358,
+    "longitude": 77.597,
+    "occupation": "Game developer",
+    "bio": "Speedrunner, 1600 on chess.com, and eternally hunting for a co-op partner for Stardew Valley.",
+    "interests": [
+      "Gaming",
+      "Chess",
+      "Tech",
+      "Stand-up comedy",
+      "Indie music"
+    ],
+    "lastActiveMinutesAgo": 8,
+    "wavesBack": true
+  },
+  {
+    "id": "p09",
+    "name": "Divya Menon",
+    "age": 30,
+    "city": "Bengaluru",
+    "neighborhood": "Basavanagudi",
+    "latitude": 12.9421,
+    "longitude": 77.5737,
+    "occupation": "Yoga instructor",
+    "bio": "I teach sunrise yoga at Lalbagh. Love slow mornings, plant nurseries and long walks with no destination.",
+    "interests": [
+      "Yoga",
+      "Gardening",
+      "Hiking",
+      "Volunteering",
+      "Reading"
+    ],
+    "lastActiveMinutesAgo": 300,
+    "wavesBack": false
+  },
+  {
+    "id": "p10",
+    "name": "Karthik Reddy",
+    "age": 27,
+    "city": "Bengaluru",
+    "neighborhood": "JP Nagar",
+    "latitude": 12.9063,
+    "longitude": 77.5857,
+    "occupation": "Edtech startup founder",
+    "bio": "Building an edtech startup and need friends who don't talk about funding rounds. Badminton anyone?",
+    "interests": [
+      "Startups",
+      "Badminton",
+      "Podcasts",
+      "Football",
+      "Travel"
+    ],
+    "lastActiveMinutesAgo": 65,
+    "wavesBack": true
+  },
+  {
+    "id": "p11",
+    "name": "Priya Sharma",
+    "age": 32,
+    "city": "Bengaluru",
+    "neighborhood": "Indiranagar",
+    "latitude": 12.9718,
+    "longitude": 77.6412,
+    "occupation": "Freelance photographer",
+    "bio": "I shoot street portraits around Shivajinagar. Happy to teach camera basics if you buy the chai.",
+    "interests": [
+      "Photography",
+      "Travel",
+      "Coffee",
+      "Dancing",
+      "Indie music"
+    ],
+    "lastActiveMinutesAgo": 15,
+    "wavesBack": true
+  },
+  {
+    "id": "p12",
+    "name": "Nikhil Gowda",
+    "age": 23,
+    "city": "Bengaluru",
+    "neighborhood": "Koramangala",
+    "latitude": 12.93,
+    "longitude": 77.62,
+    "occupation": "Junior Android developer",
+    "bio": "Fresh grad, new to the city. Into football, anime and the never-ending hunt for the best biryani.",
+    "interests": [
+      "Football",
+      "Gaming",
+      "Movies",
+      "Cooking",
+      "Tech"
+    ],
+    "lastActiveMinutesAgo": 2,
+    "wavesBack": true
+  },
+  {
+    "id": "p13",
+    "name": "Aisha Khan",
+    "age": 29,
+    "city": "Bengaluru",
+    "neighborhood": "HSR Layout",
+    "latitude": 12.915,
+    "longitude": 77.64,
+    "occupation": "Content strategist",
+    "bio": "Open-mic regular (in the audience, not brave enough yet). Big on podcasts and slow Sunday brunches.",
+    "interests": [
+      "Stand-up comedy",
+      "Podcasts",
+      "Writing",
+      "Coffee",
+      "Movies"
+    ],
+    "lastActiveMinutesAgo": 90,
+    "wavesBack": true
+  },
+  {
+    "id": "p14",
+    "name": "Rahul Varma",
+    "age": 30,
+    "city": "Hyderabad",
+    "neighborhood": "Gachibowli",
+    "latitude": 17.4401,
+    "longitude": 78.3489,
+    "occupation": "Cloud engineer",
+    "bio": "Trek leader on weekends — Ananthagiri, Bhongir, you name it. Weekdays I'm buried in Kubernetes.",
+    "interests": [
+      "Hiking",
+      "Tech",
+      "Photography",
+      "Cycling",
+      "Travel"
+    ],
+    "lastActiveMinutesAgo": 4,
+    "wavesBack": true
+  },
+  {
+    "id": "p15",
+    "name": "Lakshmi Prasad",
+    "age": 27,
+    "city": "Hyderabad",
+    "neighborhood": "Banjara Hills",
+    "latitude": 17.4126,
+    "longitude": 78.4482,
+    "occupation": "Resident doctor",
+    "bio": "Night shifts mean weird hours — looking for friends who are up for 7am coffee or late-night badminton.",
+    "interests": [
+      "Badminton",
+      "Coffee",
+      "Reading",
+      "Volunteering",
+      "Movies"
+    ],
+    "lastActiveMinutesAgo": 180,
+    "wavesBack": false
+  },
+  {
+    "id": "p16",
+    "name": "Imran Siddiqui",
+    "age": 33,
+    "city": "Hyderabad",
+    "neighborhood": "Secunderabad",
+    "latitude": 17.4399,
+    "longitude": 78.4983,
+    "occupation": "Chef & restaurant owner",
+    "bio": "I run a small Hyderabadi kitchen. Cricket fanatic — happy to argue Kohli vs Root for hours.",
+    "interests": [
+      "Cricket",
+      "Cooking",
+      "Football",
+      "Travel",
+      "Podcasts"
+    ],
+    "lastActiveMinutesAgo": 40,
+    "wavesBack": true
+  },
+  {
+    "id": "p17",
+    "name": "Harika Reddy",
+    "age": 25,
+    "city": "Hyderabad",
+    "neighborhood": "Madhapur",
+    "latitude": 17.4483,
+    "longitude": 78.3915,
+    "occupation": "QA engineer",
+    "bio": "Kuchipudi dancer since I was six. Learning chess so my nephew finally stops beating me.",
+    "interests": [
+      "Dancing",
+      "Chess",
+      "Movies",
+      "Yoga",
+      "Baking"
+    ],
+    "lastActiveMinutesAgo": 10,
+    "wavesBack": true
+  },
+  {
+    "id": "p18",
+    "name": "Aditya Rao",
+    "age": 28,
+    "city": "Hyderabad",
+    "neighborhood": "Kondapur",
+    "latitude": 17.47,
+    "longitude": 78.357,
+    "occupation": "Product designer",
+    "bio": "Indie music nerd — I curate a playlist with 2k followers. Let's go to gigs together.",
+    "interests": [
+      "Indie music",
+      "Painting",
+      "Photography",
+      "Coffee",
+      "Startups"
+    ],
+    "lastActiveMinutesAgo": 55,
+    "wavesBack": true
+  },
+  {
+    "id": "p19",
+    "name": "Farah Ali",
+    "age": 31,
+    "city": "Hyderabad",
+    "neighborhood": "Jubilee Hills",
+    "latitude": 17.4325,
+    "longitude": 78.4071,
+    "occupation": "Marketing lead",
+    "bio": "Rescue-dog mom of two. I volunteer at a shelter on Sundays and I'm always recruiting.",
+    "interests": [
+      "Dogs",
+      "Volunteering",
+      "Writing",
+      "Yoga",
+      "Travel"
+    ],
+    "lastActiveMinutesAgo": 20,
+    "wavesBack": true
+  },
+  {
+    "id": "p20",
+    "name": "Sai Teja",
+    "age": 24,
+    "city": "Hyderabad",
+    "neighborhood": "Kukatpally",
+    "latitude": 17.4948,
+    "longitude": 78.3996,
+    "occupation": "ML grad student",
+    "bio": "Doing my master's in ML. Cricket on weekends, chess online, too much chai always.",
+    "interests": [
+      "Cricket",
+      "Chess",
+      "Tech",
+      "Gaming",
+      "Running"
+    ],
+    "lastActiveMinutesAgo": 7,
+    "wavesBack": false
+  },
+  {
+    "id": "p21",
+    "name": "Pooja Deshmukh",
+    "age": 29,
+    "city": "Hyderabad",
+    "neighborhood": "Begumpet",
+    "latitude": 17.4447,
+    "longitude": 78.4664,
+    "occupation": "Bank analyst",
+    "bio": "Baking sourdough and failing gloriously. Looking for a running buddy for KBR Park.",
+    "interests": [
+      "Running",
+      "Baking",
+      "Reading",
+      "Gardening",
+      "Podcasts"
+    ],
+    "lastActiveMinutesAgo": 240,
+    "wavesBack": true
+  },
+  {
+    "id": "p22",
+    "name": "Vamsi Krishna",
+    "age": 35,
+    "city": "Hyderabad",
+    "neighborhood": "Gachibowli",
+    "latitude": 17.435,
+    "longitude": 78.355,
+    "occupation": "Startup CTO",
+    "bio": "Second-time founder. I unwind with long rides, sci-fi novels and terrible puns.",
+    "interests": [
+      "Startups",
+      "Cycling",
+      "Reading",
+      "Tech",
+      "Board games"
+    ],
+    "lastActiveMinutesAgo": 75,
+    "wavesBack": true
+  },
+  {
+    "id": "p23",
+    "name": "Emily Carter",
+    "age": 28,
+    "city": "Chicago",
+    "neighborhood": "Wicker Park",
+    "latitude": 41.9088,
+    "longitude": -87.6796,
+    "occupation": "Graphic designer",
+    "bio": "Transplant from Ohio. Thrift-store hunter, record collector, terrible at bowling but very enthusiastic.",
+    "interests": [
+      "Indie music",
+      "Painting",
+      "Photography",
+      "Coffee",
+      "Board games"
+    ],
+    "lastActiveMinutesAgo": 6,
+    "wavesBack": true
+  },
+  {
+    "id": "p24",
+    "name": "Marcus Johnson",
+    "age": 32,
+    "city": "Chicago",
+    "neighborhood": "Logan Square",
+    "latitude": 41.9234,
+    "longitude": -87.7083,
+    "occupation": "High-school history teacher",
+    "bio": "I coach JV basketball after class. Looking for a pickup-game crew and a trivia team that needs a history buff.",
+    "interests": [
+      "Basketball",
+      "Board games",
+      "Reading",
+      "Podcasts",
+      "Cooking"
+    ],
+    "lastActiveMinutesAgo": 18,
+    "wavesBack": true
+  },
+  {
+    "id": "p25",
+    "name": "Neha Patel",
+    "age": 27,
+    "city": "Chicago",
+    "neighborhood": "West Loop",
+    "latitude": 41.8826,
+    "longitude": -87.6476,
+    "occupation": "Strategy consultant",
+    "bio": "I travel three days a week for work, so weekends are sacred: lakefront runs and Devon Ave food crawls.",
+    "interests": [
+      "Running",
+      "Travel",
+      "Cooking",
+      "Yoga",
+      "Coffee"
+    ],
+    "lastActiveMinutesAgo": 35,
+    "wavesBack": true
+  },
+  {
+    "id": "p26",
+    "name": "Daniel Kim",
+    "age": 30,
+    "city": "Chicago",
+    "neighborhood": "Lincoln Park",
+    "latitude": 41.9214,
+    "longitude": -87.6513,
+    "occupation": "Software engineer",
+    "bio": "Chess club regular at the library. Learning to cook Korean food from my mom's voice notes.",
+    "interests": [
+      "Chess",
+      "Cooking",
+      "Tech",
+      "Gaming",
+      "Cycling"
+    ],
+    "lastActiveMinutesAgo": 95,
+    "wavesBack": false
+  },
+  {
+    "id": "p27",
+    "name": "Sofia Martinez",
+    "age": 26,
+    "city": "Chicago",
+    "neighborhood": "Pilsen",
+    "latitude": 41.8556,
+    "longitude": -87.6563,
+    "occupation": "Muralist",
+    "bio": "I paint murals around Pilsen. Love salsa nights, street food and people who say yes to spontaneous plans.",
+    "interests": [
+      "Painting",
+      "Dancing",
+      "Photography",
+      "Volunteering",
+      "Movies"
+    ],
+    "lastActiveMinutesAgo": 9,
+    "wavesBack": true
+  },
+  {
+    "id": "p28",
+    "name": "Tom O'Brien",
+    "age": 41,
+    "city": "Chicago",
+    "neighborhood": "Andersonville",
+    "latitude": 41.98,
+    "longitude": -87.6685,
+    "occupation": "ER nurse",
+    "bio": "Night-shift nurse, day-shift dog walker. Into crosswords, gardening and annual Cubs heartbreak.",
+    "interests": [
+      "Dogs",
+      "Gardening",
+      "Podcasts",
+      "Reading",
+      "Hiking"
+    ],
+    "lastActiveMinutesAgo": 210,
+    "wavesBack": true
+  },
+  {
+    "id": "p29",
+    "name": "Aarav Desai",
+    "age": 29,
+    "city": "Chicago",
+    "neighborhood": "Hyde Park",
+    "latitude": 41.7943,
+    "longitude": -87.5907,
+    "occupation": "Economics PhD candidate",
+    "bio": "Studying at UChicago. Cricket in Washington Park on Saturdays — yes, we exist in Chicago!",
+    "interests": [
+      "Cricket",
+      "Reading",
+      "Board games",
+      "Startups",
+      "Tennis"
+    ],
+    "lastActiveMinutesAgo": 14,
+    "wavesBack": true
+  },
+  {
+    "id": "p30",
+    "name": "Jessica Nguyen",
+    "age": 27,
+    "city": "Austin",
+    "neighborhood": "East Austin",
+    "latitude": 30.262,
+    "longitude": -97.722,
+    "occupation": "Product marketer",
+    "bio": "Taco snob, bouldering newbie and live-music regular. Always looking for a show buddy.",
+    "interests": [
+      "Indie music",
+      "Hiking",
+      "Coffee",
+      "Startups",
+      "Dancing"
+    ],
+    "lastActiveMinutesAgo": 11,
+    "wavesBack": true
+  },
+  {
+    "id": "p31",
+    "name": "Ryan Mitchell",
+    "age": 33,
+    "city": "Austin",
+    "neighborhood": "South Congress",
+    "latitude": 30.248,
+    "longitude": -97.75,
+    "occupation": "Climate-tech founder",
+    "bio": "Building a climate startup. I swim at Barton Springs year-round and run the Lady Bird Lake trail.",
+    "interests": [
+      "Startups",
+      "Running",
+      "Cycling",
+      "Podcasts",
+      "Hiking"
+    ],
+    "lastActiveMinutesAgo": 1,
+    "wavesBack": true
+  },
+  {
+    "id": "p32",
+    "name": "Maya Thompson",
+    "age": 25,
+    "city": "Austin",
+    "neighborhood": "Hyde Park",
+    "latitude": 30.305,
+    "longitude": -97.728,
+    "occupation": "Linguistics grad student",
+    "bio": "Book-club organizer, board-game collector and enthusiastic but very mediocre tennis player.",
+    "interests": [
+      "Reading",
+      "Board games",
+      "Tennis",
+      "Writing",
+      "Baking"
+    ],
+    "lastActiveMinutesAgo": 50,
+    "wavesBack": true
+  },
+  {
+    "id": "p33",
+    "name": "Carlos Rivera",
+    "age": 36,
+    "city": "Austin",
+    "neighborhood": "Mueller",
+    "latitude": 30.298,
+    "longitude": -97.705,
+    "occupation": "Firefighter",
+    "bio": "I smoke brisket every weekend and need people to help eat it. Dad jokes included at no extra cost.",
+    "interests": [
+      "Cooking",
+      "Football",
+      "Dogs",
+      "Movies",
+      "Volunteering"
+    ],
+    "lastActiveMinutesAgo": 160,
+    "wavesBack": true
+  },
+  {
+    "id": "p34",
+    "name": "Riya Kapoor",
+    "age": 28,
+    "city": "Austin",
+    "neighborhood": "Zilker",
+    "latitude": 30.26,
+    "longitude": -97.77,
+    "occupation": "Data scientist",
+    "bio": "Moved from Pune for work. Paddleboarding, Bollywood dance classes and hunting for good chai in Texas.",
+    "interests": [
+      "Dancing",
+      "Yoga",
+      "Travel",
+      "Tech",
+      "Coffee"
+    ],
+    "lastActiveMinutesAgo": 30,
+    "wavesBack": true
+  },
+  {
+    "id": "p35",
+    "name": "Ethan Brooks",
+    "age": 24,
+    "city": "Austin",
+    "neighborhood": "North Loop",
+    "latitude": 30.319,
+    "longitude": -97.72,
+    "occupation": "Barista & bassist",
+    "bio": "I play bass in a garage band and pull espresso by day. Let's jam or just talk records.",
+    "interests": [
+      "Indie music",
+      "Coffee",
+      "Gaming",
+      "Stand-up comedy",
+      "Cycling"
+    ],
+    "lastActiveMinutesAgo": 4,
+    "wavesBack": false
+  },
+  {
+    "id": "p36",
+    "name": "Hannah Lee",
+    "age": 30,
+    "city": "Austin",
+    "neighborhood": "Clarksville",
+    "latitude": 30.278,
+    "longitude": -97.76,
+    "occupation": "Pediatric occupational therapist",
+    "bio": "Weekend hiker, weekday crossword solver. Looking for friends for Hill Country day trips.",
+    "interests": [
+      "Hiking",
+      "Photography",
+      "Gardening",
+      "Reading",
+      "Dogs"
+    ],
+    "lastActiveMinutesAgo": 70,
+    "wavesBack": true
+  }
+]

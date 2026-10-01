@@ -1,0 +1,164 @@
+[
+  {
+    "personId": "p03",
+    "friendsSinceDays": 12,
+    "messages": [
+      {
+        "fromMe": true,
+        "text": "Hey Kavya! Thanks for waving back 👋",
+        "minutesAgo": 2900,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Hiii! Glad we connected. You're reading 30 books this year too?",
+        "minutesAgo": 2890,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Trying to! I'm at 17, so you're winning",
+        "minutesAgo": 2884,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Haha. What are you reading right now?",
+        "minutesAgo": 2880,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Just started Project Hail Mary — someone said it's impossible to put down",
+        "minutesAgo": 1440,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "It really is. Okay unrelated: there's a Blossom Book House trip on Saturday, want to come?",
+        "minutesAgo": 46,
+        "read": false
+      },
+      {
+        "fromMe": false,
+        "text": "We could grab coffee at Brahmin's after 😋",
+        "minutesAgo": 45,
+        "read": false
+      }
+    ]
+  },
+  {
+    "personId": "p07",
+    "friendsSinceDays": 5,
+    "messages": [
+      {
+        "fromMe": false,
+        "text": "Welcome to the croissant fan club 🥐",
+        "minutesAgo": 4300,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Ha! I'll happily be your official taste tester",
+        "minutesAgo": 4290,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Okay I made too many almond croissants again. Pickup in Bellandur?",
+        "minutesAgo": 240,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Say no more, I'll be there by 6!",
+        "minutesAgo": 232,
+        "read": true
+      }
+    ]
+  },
+  {
+    "personId": "p14",
+    "friendsSinceDays": 20,
+    "messages": [
+      {
+        "fromMe": false,
+        "text": "Ananthagiri trek this Sunday, 6am start. 8 of us so far. In?",
+        "minutesAgo": 1600,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Count me in! Need to bring anything?",
+        "minutesAgo": 1590,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Water, snacks and good shoes. We carpool from Gachibowli.",
+        "minutesAgo": 1585,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Just bought new trekking shoes 😄",
+        "minutesAgo": 300,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Nice! Break them in before Sunday or your feet will hate you",
+        "minutesAgo": 290,
+        "read": true
+      }
+    ]
+  },
+  {
+    "personId": "p24",
+    "friendsSinceDays": 30,
+    "messages": [
+      {
+        "fromMe": true,
+        "text": "Does the trivia team still need someone?",
+        "minutesAgo": 10000,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Always. Wednesdays at the Logan Square spot, 7pm.",
+        "minutesAgo": 9990,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "We came 2nd last week! Robbed on the geography round 😤",
+        "minutesAgo": 4000,
+        "read": true
+      }
+    ]
+  },
+  {
+    "personId": "p31",
+    "friendsSinceDays": 2,
+    "messages": [
+      {
+        "fromMe": false,
+        "text": "Hey! Saw you're into startups. What are you building?",
+        "minutesAgo": 2800,
+        "read": true
+      },
+      {
+        "fromMe": true,
+        "text": "Nothing yet — trying to figure out what to work on next, honestly",
+        "minutesAgo": 2700,
+        "read": true
+      },
+      {
+        "fromMe": false,
+        "text": "Classic. Come to the founder coffee meetup on Thursday, it's a good crowd.",
+        "minutesAgo": 2690,
+        "read": true
+      }
+    ]
+  }
+]

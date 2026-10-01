@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_coral">#FF7A59</color>
+    <color name="brand_coral_dark">#E85D3F</color>
+    <color name="brand_peach">#FFD8C7</color>
+    <color name="brand_teal">#14A79D</color>
+    <color name="brand_cream">#FFF8F4</color>
+    <color name="brand_night">#1C1512</color>
+    <color name="ic_launcher_background">#FF7A59</color>
+</resources>

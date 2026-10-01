@@ -1,0 +1,27 @@
+[
+  {
+    "personId": "p05",
+    "note": "Hi! Saw you're into photography too — want to explore Malleshwaram's old markets with a camera sometime?",
+    "minutesAgo": 25
+  },
+  {
+    "personId": "p10",
+    "note": "Hey! Looking for a badminton partner near JP Nagar on weekday evenings. You in?",
+    "minutesAgo": 180
+  },
+  {
+    "personId": "p19",
+    "note": "Your profile made me smile 😊 Always nice to meet people who love to travel!",
+    "minutesAgo": 610
+  },
+  {
+    "personId": "p27",
+    "note": "Hola! A bunch of us do salsa in Pilsen on Thursdays — come along sometime?",
+    "minutesAgo": 1510
+  },
+  {
+    "personId": "p34",
+    "note": "Fellow coffee lover! Have you found any good chai spots? I'm desperate 😅",
+    "minutesAgo": 2880
+  }
+]

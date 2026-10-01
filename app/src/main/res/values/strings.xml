@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BuddyUp</string>
+    <string name="tagline">Find your people, nearby.</string>
+
+    <!-- Navigation -->
+    <string name="nav_discover">Discover</string>
+    <string name="nav_requests">Waves</string>
+    <string name="nav_friends">Friends</string>
+    <string name="nav_events">Meetups</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get started</string>
+    <string name="onboarding_title_1">New city? New hobby?\nMake a buddy.</string>
+    <string name="onboarding_body_1">BuddyUp connects you with friendly people nearby who love the same things you do. No swiping for dates — just good company.</string>
+    <string name="onboarding_title_2">Wave hello,\nno pressure</string>
+    <string name="onboarding_body_2">Send a wave to anyone who looks fun to hang out with. When they wave back, you\'re buddies and can start chatting.</string>
+    <string name="onboarding_title_3">Show up for\nlocal meetups</string>
+    <string name="onboarding_body_3">Coffee walks, board-game nights and weekend hikes hosted by people in your city. Join with one tap.</string>
+
+    <!-- Setup -->
+    <string name="setup_title">Tell us about you</string>
+    <string name="setup_subtitle">This helps us find buddies who share your vibe.</string>
+    <string name="edit_profile_title">Edit profile</string>
+    <string name="field_name">Your first name</string>
+    <string name="field_age_range">Age range</string>
+    <string name="field_city">City</string>
+    <string name="field_bio">Short bio</string>
+    <string name="field_bio_hint">e.g. Weekend trekker, weekday coder. Always up for filter coffee.</string>
+    <string name="field_interests">Pick 3–8 interests</string>
+    <string name="setup_continue">Start meeting people</string>
+    <string name="save_changes">Save changes</string>
+
+    <!-- Discover -->
+    <string name="discover_title">Discover</string>
+    <string name="action_pass">Pass</string>
+    <string name="action_wave">Wave</string>
+    <string name="action_rewind">Undo pass</string>
+    <string name="action_filters">Filters</string>
+    <string name="filters_title">Discovery filters</string>
+    <string name="filters_distance">Maximum distance</string>
+    <string name="filters_age">Age</string>
+    <string name="filters_interests">Must share at least one of</string>
+    <string name="filters_reset">Reset</string>
+    <string name="filters_apply">Show buddies</string>
+    <string name="discover_empty_title">You\'ve met everyone nearby</string>
+    <string name="discover_empty_body">Widen your filters to see buddies further away, or give people you passed another look.</string>
+    <string name="discover_expand">Search anywhere</string>
+    <string name="discover_start_over">Revisit passed profiles</string>
+    <string name="discover_error_title">Couldn\'t load people</string>
+    <string name="retry">Try again</string>
+
+    <!-- Requests -->
+    <string name="requests_title">Waves</string>
+    <string name="requests_incoming">Incoming</string>
+    <string name="requests_sent">Sent</string>
+    <string name="action_accept">Wave back</string>
+    <string name="action_decline">Not now</string>
+    <string name="action_withdraw">Withdraw</string>
+    <string name="undo">Undo</string>
+    <string name="requests_empty_incoming_title">No waves yet</string>
+    <string name="requests_empty_incoming_body">Complete your bio and wave at a few people — buddies often wave first once they see you\'re active.</string>
+    <string name="requests_empty_sent_title">You haven\'t waved at anyone</string>
+    <string name="requests_empty_sent_body">Head to Discover and send a wave to someone who shares your interests.</string>
+    <string name="go_discover">Go to Discover</string>
+
+    <!-- Friends -->
+    <string name="friends_title">Friends</string>
+    <string name="friends_search">Search buddies</string>
+    <string name="friends_empty_title">No buddies yet</string>
+    <string name="friends_empty_body">When someone waves back, they\'ll show up here and you can start chatting.</string>
+    <string name="friends_no_results">No buddies match \"%1$s\"</string>
+
+    <!-- Chat -->
+    <string name="chat_hint">Say something friendly…</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_typing">typing…</string>
+    <string name="chat_online">Online</string>
+    <string name="chat_empty">Break the ice! Ask about one of your shared interests.</string>
+
+    <!-- Events -->
+    <string name="events_title">Meetups</string>
+    <string name="action_join">Join</string>
+    <string name="action_leave">Leave</string>
+    <string name="events_full">Full</string>
+    <string name="events_empty_title">Nothing here yet</string>
+    <string name="events_empty_body">You haven\'t joined any meetups. Browse what\'s happening in your city.</string>
+    <string name="events_browse_all">Browse all meetups</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_edit">Edit profile</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_notifications">In-app alerts</string>
+    <string name="settings_notifications_body">Show a banner when someone waves back</string>
+    <string name="settings_about">About BuddyUp</string>
+    <string name="settings_community">Community guidelines</string>
+    <string name="about_body">BuddyUp is a friendship app for meeting people nearby who share your interests. Everything in this build runs offline with a simulated backend.</string>
+    <string name="close">Close</string>
+</resources>

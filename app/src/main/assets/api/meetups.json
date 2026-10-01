@@ -1,0 +1,342 @@
+[
+  {
+    "id": "e01",
+    "title": "Sunday Coffee Walk",
+    "emoji": "☕",
+    "category": "COFFEE",
+    "city": "Bengaluru",
+    "venue": "Cubbon Park, Hudson Circle gate",
+    "host": "Ananya Rao",
+    "dayOffset": 2,
+    "startTime": "07:30",
+    "durationMinutes": 90,
+    "attendeeCount": 14,
+    "capacity": 25,
+    "joined": true,
+    "description": "A slow loop around Cubbon Park followed by filter coffee at a nearby darshini. Perfect if you're new to the city — we always do a round of introductions.",
+    "tags": [
+      "Beginner friendly",
+      "Free"
+    ]
+  },
+  {
+    "id": "e02",
+    "title": "Board Game Night: Catan & Codenames",
+    "emoji": "🎲",
+    "category": "GAMES",
+    "city": "Bengaluru",
+    "venue": "Dice N Dine, Koramangala 5th Block",
+    "host": "Rohan Mehta",
+    "dayOffset": 1,
+    "startTime": "19:30",
+    "durationMinutes": 180,
+    "attendeeCount": 18,
+    "capacity": 24,
+    "joined": false,
+    "description": "Bring your competitive streak. We'll split into tables of four; games and snacks provided, ₹300 cover goes to the café.",
+    "tags": [
+      "Indoors",
+      "₹300 cover"
+    ]
+  },
+  {
+    "id": "e03",
+    "title": "Sunrise Trek to Skandagiri",
+    "emoji": "🥾",
+    "category": "OUTDOORS",
+    "city": "Bengaluru",
+    "venue": "Pickup at Hebbal flyover",
+    "host": "Trek Bengaluru Collective",
+    "dayOffset": 5,
+    "startTime": "03:30",
+    "durationMinutes": 420,
+    "attendeeCount": 32,
+    "capacity": 40,
+    "joined": false,
+    "description": "Night climb to catch the sunrise above the clouds. Moderate difficulty, about 3 km each way. Carpools arranged in the group chat.",
+    "tags": [
+      "Moderate",
+      "Carpool"
+    ]
+  },
+  {
+    "id": "e04",
+    "title": "Indie Night at the Courtyard",
+    "emoji": "🎸",
+    "category": "MUSIC",
+    "city": "Bengaluru",
+    "venue": "Courtyard Live, Indiranagar",
+    "host": "Priya Sharma",
+    "dayOffset": 3,
+    "startTime": "20:00",
+    "durationMinutes": 150,
+    "attendeeCount": 46,
+    "capacity": 60,
+    "joined": false,
+    "description": "Three local bands, one tiny stage. We'll meet at the entrance at 7:45 so nobody walks in alone.",
+    "tags": [
+      "Live music",
+      "Tickets ₹500"
+    ]
+  },
+  {
+    "id": "e05",
+    "title": "Sketch & Chai at Lalbagh",
+    "emoji": "🎨",
+    "category": "CREATIVE",
+    "city": "Bengaluru",
+    "venue": "Lalbagh Glass House",
+    "host": "Divya Menon",
+    "dayOffset": 4,
+    "startTime": "08:00",
+    "durationMinutes": 120,
+    "attendeeCount": 9,
+    "capacity": 15,
+    "joined": false,
+    "description": "Bring a sketchbook and any pens you like. No skill required — we sketch for an hour and then swap tips over chai.",
+    "tags": [
+      "All levels",
+      "Free"
+    ]
+  },
+  {
+    "id": "e06",
+    "title": "Ananthagiri Hills Day Hike",
+    "emoji": "🥾",
+    "category": "OUTDOORS",
+    "city": "Hyderabad",
+    "venue": "Meet at Gachibowli Stadium",
+    "host": "Rahul Varma",
+    "dayOffset": 3,
+    "startTime": "05:30",
+    "durationMinutes": 600,
+    "attendeeCount": 21,
+    "capacity": 30,
+    "joined": false,
+    "description": "Easy forest trail with a stop at the Musi river origin. We carpool from Gachibowli and stop for breakfast in Vikarabad.",
+    "tags": [
+      "Easy",
+      "Carpool"
+    ]
+  },
+  {
+    "id": "e07",
+    "title": "Chess in the Park",
+    "emoji": "♟️",
+    "category": "GAMES",
+    "city": "Hyderabad",
+    "venue": "KBR Park main entrance",
+    "host": "Harika Reddy",
+    "dayOffset": 1,
+    "startTime": "17:30",
+    "durationMinutes": 120,
+    "attendeeCount": 11,
+    "capacity": 20,
+    "joined": false,
+    "description": "Casual blitz and rapid games on the lawn. Boards provided, all ratings welcome — beginners get a mini lesson.",
+    "tags": [
+      "All levels",
+      "Free"
+    ]
+  },
+  {
+    "id": "e08",
+    "title": "Biryani Trail: Old City Food Walk",
+    "emoji": "🍛",
+    "category": "FOOD",
+    "city": "Hyderabad",
+    "venue": "Charminar, east gate",
+    "host": "Imran Siddiqui",
+    "dayOffset": 6,
+    "startTime": "18:00",
+    "durationMinutes": 180,
+    "attendeeCount": 24,
+    "capacity": 24,
+    "joined": false,
+    "description": "Four stops, two kinds of biryani, one legendary Irani chai. Hosted by a chef who grew up in the Old City.",
+    "tags": [
+      "Food walk",
+      "₹800 per head"
+    ]
+  },
+  {
+    "id": "e09",
+    "title": "Startup Founders Breakfast",
+    "emoji": "🚀",
+    "category": "NETWORKING",
+    "city": "Hyderabad",
+    "venue": "T-Hub, Madhapur",
+    "host": "Vamsi Krishna",
+    "dayOffset": 2,
+    "startTime": "08:30",
+    "durationMinutes": 90,
+    "attendeeCount": 37,
+    "capacity": 50,
+    "joined": false,
+    "description": "Informal breakfast for founders, early employees and the startup-curious. No pitching, just honest conversations.",
+    "tags": [
+      "Networking",
+      "Free"
+    ]
+  },
+  {
+    "id": "e10",
+    "title": "Lakefront Run Club 5K",
+    "emoji": "🏃",
+    "category": "FITNESS",
+    "city": "Chicago",
+    "venue": "North Avenue Beach",
+    "host": "Neha Patel",
+    "dayOffset": 1,
+    "startTime": "07:00",
+    "durationMinutes": 60,
+    "attendeeCount": 28,
+    "capacity": 50,
+    "joined": false,
+    "description": "Conversational-pace 5K along the lakefront, then bagels. Walkers welcome — nobody gets left behind.",
+    "tags": [
+      "All paces",
+      "Free"
+    ]
+  },
+  {
+    "id": "e11",
+    "title": "Trivia Tuesday Team-Up",
+    "emoji": "🧠",
+    "category": "GAMES",
+    "city": "Chicago",
+    "venue": "The Whistler, Logan Square",
+    "host": "Marcus Johnson",
+    "dayOffset": 4,
+    "startTime": "19:00",
+    "durationMinutes": 120,
+    "attendeeCount": 15,
+    "capacity": 24,
+    "joined": true,
+    "description": "We split newcomers across teams so everyone meets someone new. Bragging rights only, but the snacks are real.",
+    "tags": [
+      "Indoors",
+      "Free"
+    ]
+  },
+  {
+    "id": "e12",
+    "title": "Pilsen Mural Walk",
+    "emoji": "🎨",
+    "category": "CREATIVE",
+    "city": "Chicago",
+    "venue": "18th St Pink Line station",
+    "host": "Sofia Martinez",
+    "dayOffset": 6,
+    "startTime": "11:00",
+    "durationMinutes": 120,
+    "attendeeCount": 12,
+    "capacity": 20,
+    "joined": false,
+    "description": "A walking tour of Pilsen's murals led by one of the artists, ending with tacos on 18th Street.",
+    "tags": [
+      "Walking tour",
+      "Free"
+    ]
+  },
+  {
+    "id": "e13",
+    "title": "Devon Avenue Food Crawl",
+    "emoji": "🍛",
+    "category": "FOOD",
+    "city": "Chicago",
+    "venue": "Devon Ave & Western Ave",
+    "host": "Aarav Desai",
+    "dayOffset": 8,
+    "startTime": "17:00",
+    "durationMinutes": 180,
+    "attendeeCount": 19,
+    "capacity": 20,
+    "joined": false,
+    "description": "Samosas, chaat, kebabs and kulfi along Chicago's Little India. Bring cash and an empty stomach.",
+    "tags": [
+      "Food walk",
+      "$25 per head"
+    ]
+  },
+  {
+    "id": "e14",
+    "title": "Barton Springs Morning Swim",
+    "emoji": "🏊",
+    "category": "FITNESS",
+    "city": "Austin",
+    "venue": "Barton Springs Pool, main entrance",
+    "host": "Ryan Mitchell",
+    "dayOffset": 2,
+    "startTime": "07:00",
+    "durationMinutes": 75,
+    "attendeeCount": 16,
+    "capacity": 30,
+    "joined": false,
+    "description": "A chilly 68°F swim year-round, followed by breakfast tacos. All swimming levels welcome.",
+    "tags": [
+      "Outdoors",
+      "Pool entry $5"
+    ]
+  },
+  {
+    "id": "e15",
+    "title": "Live Music Crawl on Red River",
+    "emoji": "🎸",
+    "category": "MUSIC",
+    "city": "Austin",
+    "venue": "Mohawk, Red River St",
+    "host": "Jessica Nguyen",
+    "dayOffset": 3,
+    "startTime": "20:30",
+    "durationMinutes": 210,
+    "attendeeCount": 22,
+    "capacity": 35,
+    "joined": false,
+    "description": "Three venues, one night. We'll catch local openers and end with late-night queso.",
+    "tags": [
+      "Live music",
+      "21+"
+    ]
+  },
+  {
+    "id": "e16",
+    "title": "Board Games & Brisket",
+    "emoji": "🍖",
+    "category": "FOOD",
+    "city": "Austin",
+    "venue": "Mueller Lake Park pavilion",
+    "host": "Carlos Rivera",
+    "dayOffset": 5,
+    "startTime": "18:00",
+    "durationMinutes": 180,
+    "attendeeCount": 10,
+    "capacity": 16,
+    "joined": false,
+    "description": "Carlos smokes the brisket, you bring a game or a side. Family-friendly and very low-key.",
+    "tags": [
+      "Potluck",
+      "Free"
+    ]
+  },
+  {
+    "id": "e17",
+    "title": "Founder Coffee Thursdays",
+    "emoji": "☕",
+    "category": "COFFEE",
+    "city": "Austin",
+    "venue": "Jo's Coffee, South Congress",
+    "host": "Ryan Mitchell",
+    "dayOffset": 1,
+    "startTime": "08:00",
+    "durationMinutes": 60,
+    "attendeeCount": 23,
+    "capacity": 40,
+    "joined": false,
+    "description": "Weekly coffee for founders and builders. Show up, grab a cup, meet two new people.",
+    "tags": [
+      "Networking",
+      "Free"
+    ]
+  }
+]
