@@ -214,7 +214,7 @@ private fun IncomingRequestCard(
                 Column(Modifier.weight(1f)) {
                     Text("${person.name}, ${person.age}", style = MaterialTheme.typography.titleMedium)
                     Text(
-                        text = "${person.neighborhood} · ${Formatters.distance(person.distanceKm)}",
+                        text = Formatters.place(person.neighborhood, person.city, person.distanceKm),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,

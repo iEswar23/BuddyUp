@@ -1,7 +1,7 @@
 [
   {
     "id": "e01",
-    "title": "Sunday Coffee Walk",
+    "title": "Sunrise Coffee Walk",
     "emoji": "☕",
     "category": "COFFEE",
     "city": "Bengaluru",
@@ -201,7 +201,7 @@
   },
   {
     "id": "e11",
-    "title": "Trivia Tuesday Team-Up",
+    "title": "Pub Trivia Team-Up",
     "emoji": "🧠",
     "category": "GAMES",
     "city": "Chicago",
@@ -321,7 +321,7 @@
   },
   {
     "id": "e17",
-    "title": "Founder Coffee Thursdays",
+    "title": "Founder Coffee Morning",
     "emoji": "☕",
     "category": "COFFEE",
     "city": "Austin",

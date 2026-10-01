@@ -15,6 +15,15 @@ object Formatters {
         else -> "${NumberFormat.getIntegerInstance(Locale.US).format(km.toLong())} km away"
     }
 
+    /**
+     * Short location line for list rows: "Indiranagar · 5 km away" for people nearby, or
+     * "Jubilee Hills, Hyderabad" for someone in another city, where a raw km figure means little.
+     */
+    fun place(neighborhood: String, city: String, km: Double): String =
+        if (km < OTHER_CITY_KM) "$neighborhood · ${distance(km)}" else "$neighborhood, $city"
+
+    private const val OTHER_CITY_KM = 100.0
+
     /** "now", "5m", "3h", "2d", or a short date for anything older than a week. */
     fun relativeShort(timestamp: Long, now: Long): String {
         val diff = (now - timestamp).coerceAtLeast(0)
