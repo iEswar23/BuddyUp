@@ -4,8 +4,11 @@ import com.google.common.truth.Truth.assertThat
 import io.github.ieswar23.buddyup.MainDispatcherRule
 import io.github.ieswar23.buddyup.data.repository.SyncStatus
 import io.github.ieswar23.buddyup.domain.model.DiscoverFilters
+import io.github.ieswar23.buddyup.domain.model.Report
+import io.github.ieswar23.buddyup.domain.model.ReportReason
 import io.github.ieswar23.buddyup.domain.scoring.MatchScorer
 import io.github.ieswar23.buddyup.fakes.FakePeopleRepository
+import io.github.ieswar23.buddyup.fakes.FakeSafetyRepository
 import io.github.ieswar23.buddyup.fakes.FakeUserRepository
 import io.github.ieswar23.buddyup.fakes.NOW
 import io.github.ieswar23.buddyup.fakes.person
@@ -30,9 +33,10 @@ class DiscoverViewModelTest {
     private val bestMatch = person("best", interests = listOf("Hiking", "Coffee", "Chess", "Photography"), distanceKm = 1.0)
     private val okMatch = person("ok", interests = listOf("Hiking", "Cricket"), distanceKm = 8.0, age = 41)
     private val farAway = person("far", interests = listOf("Chess", "Yoga"), distanceKm = 1_200.0)
+    private val safetyRepository = FakeSafetyRepository()
 
     private fun createViewModel(repo: FakePeopleRepository) =
-        DiscoverViewModel(repo, FakeUserRepository(), MatchScorer(), timeProvider = { NOW })
+        DiscoverViewModel(repo, FakeUserRepository(), safetyRepository, MatchScorer(), timeProvider = { NOW })
 
     private fun TestScope.observe(vm: DiscoverViewModel) {
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { vm.uiState.collect {} }
@@ -118,5 +122,23 @@ class DiscoverViewModelTest {
 
         repo.setSyncStatus(SyncStatus.Synced)
         assertThat(vm.uiState.value).isEqualTo(DiscoverUiState.Empty(hasActiveFilters = false))
+    }
+
+    @Test
+    fun `blocking from a card hides it, records the block and clears undo for that person`() = runTest {
+        val repo = FakePeopleRepository(listOf(bestMatch, okMatch))
+        val vm = createViewModel(repo)
+        observe(vm)
+        vm.onPass(bestMatch)
+        vm.undoLastPass()
+        vm.onPass(okMatch)
+
+        val report = Report(ReportReason.FAKE_PROFILE, note = "Same bio as another profile")
+        vm.onBlock(okMatch, report)
+
+        assertThat(safetyRepository.blocks.value).containsExactly("ok", report)
+        assertThat(vm.lastPassed.value).isNull()
+        val state = vm.uiState.value as DiscoverUiState.Content
+        assertThat(state.cards.map { it.person.id }).containsExactly("best")
     }
 }

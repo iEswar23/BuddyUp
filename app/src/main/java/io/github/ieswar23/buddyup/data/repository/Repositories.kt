@@ -1,11 +1,13 @@
 package io.github.ieswar23.buddyup.data.repository
 
 import io.github.ieswar23.buddyup.domain.model.AppSettings
+import io.github.ieswar23.buddyup.domain.model.BlockedPerson
 import io.github.ieswar23.buddyup.domain.model.ChatMessage
 import io.github.ieswar23.buddyup.domain.model.FriendRequest
 import io.github.ieswar23.buddyup.domain.model.FriendSummary
 import io.github.ieswar23.buddyup.domain.model.Meetup
 import io.github.ieswar23.buddyup.domain.model.Person
+import io.github.ieswar23.buddyup.domain.model.Report
 import io.github.ieswar23.buddyup.domain.model.ThemeMode
 import io.github.ieswar23.buddyup.domain.model.UserProfile
 import kotlinx.coroutines.flow.Flow
@@ -85,4 +87,19 @@ interface MeetupRepository {
     /** Joins or leaves a meetup. Returns true when the user is now attending. */
     suspend fun toggleJoin(meetupId: String): Boolean
     suspend fun refresh(): Result<Unit>
+}
+
+/**
+ * Blocking and reporting. Blocked people are filtered out of Discover, Waves, Friends and chats
+ * by the other repositories, and the [io.github.ieswar23.buddyup.data.simulation.BuddySimulator]
+ * never acts on their behalf.
+ */
+interface SafetyRepository {
+    /** Blocked people, most recently blocked first. */
+    fun observeBlocked(): Flow<List<BlockedPerson>>
+    fun observeBlockedIds(): Flow<Set<String>>
+
+    /** Blocks [personId], optionally filing a [report] about them. */
+    suspend fun block(personId: String, report: Report? = null)
+    suspend fun unblock(personId: String)
 }

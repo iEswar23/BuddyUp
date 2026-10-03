@@ -63,6 +63,8 @@ import io.github.ieswar23.buddyup.R
 import io.github.ieswar23.buddyup.domain.model.Person
 import io.github.ieswar23.buddyup.ui.components.CardSkeleton
 import io.github.ieswar23.buddyup.ui.components.EmptyState
+import io.github.ieswar23.buddyup.ui.safety.SafetyAction
+import io.github.ieswar23.buddyup.ui.safety.SafetyActionPrompt
 import io.github.ieswar23.buddyup.ui.theme.AvatarGradients
 import kotlinx.coroutines.launch
 import kotlin.math.abs
@@ -77,6 +79,8 @@ fun DiscoverScreen(viewModel: DiscoverViewModel = hiltViewModel()) {
     val filterInterests by viewModel.filterInterests.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     var showFilters by rememberSaveable { mutableStateOf(false) }
+    // Who is being blocked or reported from their card, and which of the two.
+    var safetyTarget by remember { mutableStateOf<Pair<Person, SafetyAction>?>(null) }
 
     LaunchedEffect(viewModel) {
         viewModel.events.collect { event ->
@@ -158,6 +162,7 @@ fun DiscoverScreen(viewModel: DiscoverViewModel = hiltViewModel()) {
                         onWave = viewModel::onWave,
                         onRewind = viewModel::undoLastPass,
                         onFilters = { showFilters = true },
+                        onSafetyAction = { person, action -> safetyTarget = person to action },
                     )
                 }
             }
@@ -176,6 +181,18 @@ fun DiscoverScreen(viewModel: DiscoverViewModel = hiltViewModel()) {
             onDismiss = { showFilters = false },
         )
     }
+
+    safetyTarget?.let { (person, action) ->
+        SafetyActionPrompt(
+            action = action,
+            firstName = person.firstName,
+            onConfirm = { report ->
+                safetyTarget = null
+                viewModel.onBlock(person, report)
+            },
+            onDismiss = { safetyTarget = null },
+        )
+    }
 }
 
 @Composable
@@ -186,6 +203,7 @@ private fun CardDeck(
     onWave: (Person) -> Unit,
     onRewind: () -> Unit,
     onFilters: () -> Unit,
+    onSafetyAction: (Person, SafetyAction) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val now = remember(cards.firstOrNull()?.person?.id) { System.currentTimeMillis() }
@@ -222,7 +240,13 @@ private fun CardDeck(
                             onSwiped = ::commit,
                             modifier = Modifier.fillMaxSize(),
                         ) {
-                            ProfileCard(card = card, now = now, swipeProgress = topState.progress, modifier = Modifier.fillMaxSize())
+                            ProfileCard(
+                                card = card,
+                                now = now,
+                                swipeProgress = topState.progress,
+                                onSafetyAction = { action -> onSafetyAction(card.person, action) },
+                                modifier = Modifier.fillMaxSize(),
+                            )
                         }
                     } else {
                         // Cards underneath peek out and grow as the top card is dragged away.

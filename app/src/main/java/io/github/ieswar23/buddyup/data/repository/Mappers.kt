@@ -1,5 +1,6 @@
 package io.github.ieswar23.buddyup.data.repository
 
+import io.github.ieswar23.buddyup.data.local.entity.BlockedPersonRow
 import io.github.ieswar23.buddyup.data.local.entity.FriendRow
 import io.github.ieswar23.buddyup.data.local.entity.MeetupEntity
 import io.github.ieswar23.buddyup.data.local.entity.MessageEntity
@@ -7,6 +8,7 @@ import io.github.ieswar23.buddyup.data.local.entity.PersonEntity
 import io.github.ieswar23.buddyup.data.local.entity.PersonWithConnection
 import io.github.ieswar23.buddyup.data.remote.dto.MeetupDto
 import io.github.ieswar23.buddyup.data.remote.dto.PersonDto
+import io.github.ieswar23.buddyup.domain.model.BlockedPerson
 import io.github.ieswar23.buddyup.domain.model.ChatMessage
 import io.github.ieswar23.buddyup.domain.model.City
 import io.github.ieswar23.buddyup.domain.model.ConnectionState
@@ -15,6 +17,7 @@ import io.github.ieswar23.buddyup.domain.model.FriendSummary
 import io.github.ieswar23.buddyup.domain.model.Meetup
 import io.github.ieswar23.buddyup.domain.model.MeetupCategory
 import io.github.ieswar23.buddyup.domain.model.Person
+import io.github.ieswar23.buddyup.domain.model.Report
 import io.github.ieswar23.buddyup.domain.model.RequestDirection
 import io.github.ieswar23.buddyup.util.GeoDistance
 import java.util.Calendar
@@ -48,6 +51,12 @@ fun FriendRow.toDomain(origin: City): FriendSummary = FriendSummary(
     lastMessageAt = lastMessageAt,
     lastMessageFromMe = lastMessageFromMe ?: false,
     unreadCount = unreadCount,
+)
+
+fun BlockedPersonRow.toDomain(origin: City): BlockedPerson = BlockedPerson(
+    person = person.toDomain(origin),
+    report = block.reason?.let { Report(it, block.note) },
+    blockedAt = block.blockedAt,
 )
 
 fun MessageEntity.toDomain(): ChatMessage = ChatMessage(

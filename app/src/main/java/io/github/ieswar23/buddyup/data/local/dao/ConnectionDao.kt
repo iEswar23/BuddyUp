@@ -22,12 +22,16 @@ interface ConnectionDao {
             connections.friendsSince AS c_friendsSince
         FROM people INNER JOIN connections ON connections.personId = people.id
         WHERE connections.state = :state
+            AND people.id NOT IN (SELECT personId FROM blocked_people)
         ORDER BY connections.updatedAt DESC
         """
     )
     fun observeByState(state: ConnectionState): Flow<List<PersonWithConnection>>
 
-    @Query("SELECT COUNT(*) FROM connections WHERE state = :state")
+    @Query(
+        "SELECT COUNT(*) FROM connections WHERE state = :state " +
+            "AND personId NOT IN (SELECT personId FROM blocked_people)"
+    )
     fun observeCount(state: ConnectionState): Flow<Int>
 
     @Query(
@@ -44,6 +48,7 @@ interface ConnectionDao {
             (SELECT COUNT(*) FROM messages WHERE friendId = people.id AND fromMe = 0 AND isRead = 0) AS unreadCount
         FROM people INNER JOIN connections ON connections.personId = people.id
         WHERE connections.state = 'FRIEND'
+            AND people.id NOT IN (SELECT personId FROM blocked_people)
         """
     )
     fun observeFriends(): Flow<List<FriendRow>>

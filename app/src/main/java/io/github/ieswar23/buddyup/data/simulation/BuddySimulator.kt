@@ -1,5 +1,6 @@
 package io.github.ieswar23.buddyup.data.simulation
 
+import io.github.ieswar23.buddyup.data.local.dao.BlockDao
 import io.github.ieswar23.buddyup.data.local.dao.ConnectionDao
 import io.github.ieswar23.buddyup.data.local.dao.MessageDao
 import io.github.ieswar23.buddyup.data.local.dao.PersonDao
@@ -37,6 +38,8 @@ data class SimulationConfig(
  *  - people flagged `wavesBack` accept the user's wave after a short delay and say hi;
  *  - friends show a typing indicator and then reply to the user's messages.
  *
+ * Blocked people never wave back, type or reply.
+ *
  * Work runs on the application scope so it survives navigation between screens.
  */
 @Singleton
@@ -45,6 +48,7 @@ class BuddySimulator @Inject constructor(
     private val personDao: PersonDao,
     private val connectionDao: ConnectionDao,
     private val messageDao: MessageDao,
+    private val blockDao: BlockDao,
     private val userRepository: UserRepository,
     private val replyGenerator: ReplyGenerator,
     private val eventBus: AppEventBus,
@@ -63,8 +67,9 @@ class BuddySimulator @Inject constructor(
             if (!person.wavesBack) return@launch
             delay(random.nextLong(config.waveBackDelayMs))
 
-            // The user may have withdrawn the wave in the meantime.
+            // The user may have withdrawn the wave, or blocked them, in the meantime.
             if (connectionDao.get(personId)?.state != ConnectionState.WAVE_SENT) return@launch
+            if (blockDao.isBlocked(personId)) return@launch
 
             val now = timeProvider.now()
             val profile = userRepository.profile.first()
@@ -99,11 +104,13 @@ class BuddySimulator @Inject constructor(
         replyJobs.remove(friendId)?.cancel()
         val job = scope.launch {
             try {
+                if (blockDao.isBlocked(friendId)) return@launch
                 delay(random.nextLong(config.readDelayMs))
                 _typing.update { it + friendId }
                 delay(random.nextLong(config.typingDelayMs) + (text.length * 12L).coerceAtMost(1_500L))
 
                 val person = personDao.getById(friendId) ?: return@launch
+                if (blockDao.isBlocked(friendId)) return@launch
                 val profile = userRepository.profile.first()
                 val shared = MatchScorer.sharedInterests(profile.interests, person.interests)
                 val reply = replyGenerator.replyTo(text, person.toDomain(SupportedCities.byName(profile.city)), shared)
@@ -118,6 +125,12 @@ class BuddySimulator @Inject constructor(
         }
         replyJobs[friendId] = job
         job.invokeOnCompletion { replyJobs.remove(friendId, job) }
+    }
+
+    /** Cancels any pending reply (and typing indicator) from someone the user just blocked. */
+    fun onBlocked(personId: String) {
+        replyJobs.remove(personId)?.cancel()
+        _typing.update { it - personId }
     }
 
     private fun Random.nextLong(range: LongRange): Long =

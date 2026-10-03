@@ -1,13 +1,18 @@
 package io.github.ieswar23.buddyup.data.repository
 
+import io.github.ieswar23.buddyup.data.local.dao.BlockDao
 import io.github.ieswar23.buddyup.data.local.dao.ConnectionDao
 import io.github.ieswar23.buddyup.data.local.dao.MeetupDao
 import io.github.ieswar23.buddyup.data.local.dao.MessageDao
 import io.github.ieswar23.buddyup.data.local.dao.PersonDao
+import io.github.ieswar23.buddyup.data.local.entity.BlockedPersonEntity
 import io.github.ieswar23.buddyup.data.local.entity.ConnectionEntity
 import io.github.ieswar23.buddyup.data.local.entity.MessageEntity
+import io.github.ieswar23.buddyup.data.simulation.AppEvent
+import io.github.ieswar23.buddyup.data.simulation.AppEventBus
 import io.github.ieswar23.buddyup.data.simulation.BuddySimulator
 import io.github.ieswar23.buddyup.di.IoDispatcher
+import io.github.ieswar23.buddyup.domain.model.BlockedPerson
 import io.github.ieswar23.buddyup.domain.model.ChatMessage
 import io.github.ieswar23.buddyup.domain.model.City
 import io.github.ieswar23.buddyup.domain.model.ConnectionState
@@ -15,6 +20,7 @@ import io.github.ieswar23.buddyup.domain.model.FriendRequest
 import io.github.ieswar23.buddyup.domain.model.FriendSummary
 import io.github.ieswar23.buddyup.domain.model.Meetup
 import io.github.ieswar23.buddyup.domain.model.Person
+import io.github.ieswar23.buddyup.domain.model.Report
 import io.github.ieswar23.buddyup.domain.model.RequestDirection
 import io.github.ieswar23.buddyup.domain.model.SupportedCities
 import io.github.ieswar23.buddyup.util.TimeProvider
@@ -198,4 +204,39 @@ class OfflineFirstMeetupRepository @Inject constructor(
     }
 
     override suspend fun refresh(): Result<Unit> = synchronizer.refreshMeetups()
+}
+
+@Singleton
+class OfflineFirstSafetyRepository @Inject constructor(
+    private val blockDao: BlockDao,
+    private val personDao: PersonDao,
+    private val userRepository: UserRepository,
+    private val simulator: BuddySimulator,
+    private val eventBus: AppEventBus,
+    private val timeProvider: TimeProvider,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+) : SafetyRepository {
+
+    override fun observeBlocked(): Flow<List<BlockedPerson>> =
+        combine(blockDao.observeBlocked(), userRepository.originCity()) { rows, origin ->
+            rows.map { it.toDomain(origin) }
+        }.flowOn(ioDispatcher)
+
+    override fun observeBlockedIds(): Flow<Set<String>> =
+        blockDao.observeBlockedIds().map { it.toSet() }.distinctUntilChanged().flowOn(ioDispatcher)
+
+    override suspend fun block(personId: String, report: Report?) {
+        // Stop any reply or typing indicator that is already in flight before hiding them.
+        simulator.onBlocked(personId)
+        val person = withContext(ioDispatcher) {
+            blockDao.upsert(BlockedPersonEntity(personId, report?.reason, report?.note, timeProvider.now()))
+            personDao.getById(personId)
+        }
+        val firstName = person?.name?.substringBefore(' ') ?: return
+        eventBus.emit(AppEvent.Blocked(personId, firstName, reported = report != null))
+    }
+
+    override suspend fun unblock(personId: String) = withContext(ioDispatcher) {
+        blockDao.delete(personId)
+    }
 }

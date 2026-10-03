@@ -1,14 +1,21 @@
 package io.github.ieswar23.buddyup.fakes
 
 import io.github.ieswar23.buddyup.data.repository.ChatRepository
+import io.github.ieswar23.buddyup.data.repository.FriendsRepository
+import io.github.ieswar23.buddyup.data.repository.MeetupRepository
 import io.github.ieswar23.buddyup.data.repository.PeopleRepository
 import io.github.ieswar23.buddyup.data.repository.RequestsRepository
+import io.github.ieswar23.buddyup.data.repository.SafetyRepository
 import io.github.ieswar23.buddyup.data.repository.SyncStatus
 import io.github.ieswar23.buddyup.data.repository.UserRepository
 import io.github.ieswar23.buddyup.domain.model.AppSettings
+import io.github.ieswar23.buddyup.domain.model.BlockedPerson
 import io.github.ieswar23.buddyup.domain.model.ChatMessage
 import io.github.ieswar23.buddyup.domain.model.FriendRequest
+import io.github.ieswar23.buddyup.domain.model.FriendSummary
+import io.github.ieswar23.buddyup.domain.model.Meetup
 import io.github.ieswar23.buddyup.domain.model.Person
+import io.github.ieswar23.buddyup.domain.model.Report
 import io.github.ieswar23.buddyup.domain.model.RequestDirection
 import io.github.ieswar23.buddyup.domain.model.ThemeMode
 import io.github.ieswar23.buddyup.domain.model.UserProfile
@@ -138,4 +145,36 @@ class FakeChatRepository(initial: Map<String, List<ChatMessage>> = emptyMap()) :
             map + (friendId to map[friendId].orEmpty().map { it.copy(isRead = true) })
         }
     }
+}
+
+class FakeSafetyRepository(people: List<Person> = emptyList()) : SafetyRepository {
+    private val all = people.associateBy { it.id }
+    /** Blocked person id → report, in blocking order. */
+    val blocks = MutableStateFlow<Map<String, Report?>>(emptyMap())
+
+    override fun observeBlocked(): Flow<List<BlockedPerson>> = blocks.map { map ->
+        map.entries.reversed().mapNotNull { (id, report) -> all[id]?.let { BlockedPerson(it, report, NOW) } }
+    }
+
+    override fun observeBlockedIds(): Flow<Set<String>> = blocks.map { it.keys }
+
+    override suspend fun block(personId: String, report: Report?) {
+        blocks.update { it + (personId to report) }
+    }
+
+    override suspend fun unblock(personId: String) {
+        blocks.update { it - personId }
+    }
+}
+
+class FakeFriendsRepository(friends: List<FriendSummary> = emptyList()) : FriendsRepository {
+    val friends = MutableStateFlow(friends)
+    override fun observeFriends(): Flow<List<FriendSummary>> = friends
+}
+
+class FakeMeetupRepository(meetups: List<Meetup> = emptyList()) : MeetupRepository {
+    val meetups = MutableStateFlow(meetups)
+    override fun observeMeetups(): Flow<List<Meetup>> = meetups
+    override suspend fun toggleJoin(meetupId: String): Boolean = false
+    override suspend fun refresh(): Result<Unit> = Result.success(Unit)
 }

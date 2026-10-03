@@ -9,8 +9,15 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PersonDao {
 
-    /** People the user hasn't interacted with yet. */
-    @Query("SELECT * FROM people WHERE id NOT IN (SELECT personId FROM connections) ORDER BY lastActiveAt DESC")
+    /** People the user hasn't interacted with (or blocked) yet. */
+    @Query(
+        """
+        SELECT * FROM people
+        WHERE id NOT IN (SELECT personId FROM connections)
+            AND id NOT IN (SELECT personId FROM blocked_people)
+        ORDER BY lastActiveAt DESC
+        """
+    )
     fun observeUnseen(): Flow<List<PersonEntity>>
 
     @Query("SELECT * FROM people WHERE id = :id")

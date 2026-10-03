@@ -13,8 +13,10 @@ import io.github.ieswar23.buddyup.data.repository.OfflineFirstFriendsRepository
 import io.github.ieswar23.buddyup.data.repository.OfflineFirstMeetupRepository
 import io.github.ieswar23.buddyup.data.repository.OfflineFirstPeopleRepository
 import io.github.ieswar23.buddyup.data.repository.OfflineFirstRequestsRepository
+import io.github.ieswar23.buddyup.data.repository.OfflineFirstSafetyRepository
 import io.github.ieswar23.buddyup.data.repository.PeopleRepository
 import io.github.ieswar23.buddyup.data.repository.RequestsRepository
+import io.github.ieswar23.buddyup.data.repository.SafetyRepository
 import io.github.ieswar23.buddyup.data.repository.UserRepository
 import io.github.ieswar23.buddyup.util.SystemTimeProvider
 import io.github.ieswar23.buddyup.util.TimeProvider
@@ -51,4 +53,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindMeetupRepository(impl: OfflineFirstMeetupRepository): MeetupRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindSafetyRepository(impl: OfflineFirstSafetyRepository): SafetyRepository
 }

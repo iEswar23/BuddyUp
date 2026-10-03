@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.ieswar23.buddyup.data.repository.PeopleRepository
+import io.github.ieswar23.buddyup.data.repository.SafetyRepository
 import io.github.ieswar23.buddyup.data.repository.SyncStatus
 import io.github.ieswar23.buddyup.data.repository.UserRepository
 import io.github.ieswar23.buddyup.domain.model.DiscoverFilters
 import io.github.ieswar23.buddyup.domain.model.Interests
 import io.github.ieswar23.buddyup.domain.model.Person
+import io.github.ieswar23.buddyup.domain.model.Report
 import io.github.ieswar23.buddyup.domain.scoring.MatchResult
 import io.github.ieswar23.buddyup.domain.scoring.MatchScorer
 import io.github.ieswar23.buddyup.util.TimeProvider
@@ -46,6 +48,7 @@ data class DiscoverHeader(val city: String = "", val nearbyCount: Int = 0)
 class DiscoverViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository,
     userRepository: UserRepository,
+    private val safetyRepository: SafetyRepository,
     private val matchScorer: MatchScorer,
     private val timeProvider: TimeProvider,
 ) : ViewModel() {
@@ -116,6 +119,13 @@ class DiscoverViewModel @Inject constructor(
             peopleRepository.wave(person.id)
             _events.send(DiscoverEvent.WaveSent(person.firstName))
         }
+    }
+
+    /** Blocks (and optionally reports) someone straight from their card; they never come back here. */
+    fun onBlock(person: Person, report: Report?) {
+        dismissedIds.update { it + person.id }
+        if (_lastPassed.value?.id == person.id) _lastPassed.value = null
+        viewModelScope.launch { safetyRepository.block(person.id, report) }
     }
 
     fun undoLastPass() {

@@ -24,6 +24,9 @@ interface MessageDao {
     @Query("UPDATE messages SET isRead = 1 WHERE friendId = :friendId AND fromMe = 0 AND isRead = 0")
     suspend fun markConversationRead(friendId: String)
 
-    @Query("SELECT COUNT(*) FROM messages WHERE fromMe = 0 AND isRead = 0")
+    @Query(
+        "SELECT COUNT(*) FROM messages WHERE fromMe = 0 AND isRead = 0 " +
+            "AND friendId NOT IN (SELECT personId FROM blocked_people)"
+    )
     fun observeUnreadTotal(): Flow<Int>
 }

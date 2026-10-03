@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.ieswar23.buddyup.data.local.BuddyUpDatabase
+import io.github.ieswar23.buddyup.data.local.dao.BlockDao
 import io.github.ieswar23.buddyup.data.local.dao.ConnectionDao
 import io.github.ieswar23.buddyup.data.local.dao.MeetupDao
 import io.github.ieswar23.buddyup.data.local.dao.MessageDao
@@ -22,6 +23,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): BuddyUpDatabase =
         Room.databaseBuilder(context, BuddyUpDatabase::class.java, BuddyUpDatabase.NAME)
+            .addMigrations(*BuddyUpDatabase.ALL_MIGRATIONS)
             .fallbackToDestructiveMigration()
             .build()
 
@@ -36,4 +38,7 @@ object DatabaseModule {
 
     @Provides
     fun provideMeetupDao(db: BuddyUpDatabase): MeetupDao = db.meetupDao()
+
+    @Provides
+    fun provideBlockDao(db: BuddyUpDatabase): BlockDao = db.blockDao()
 }

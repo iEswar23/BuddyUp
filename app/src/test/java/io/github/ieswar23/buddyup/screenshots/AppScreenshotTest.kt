@@ -2,6 +2,7 @@ package io.github.ieswar23.buddyup.screenshots
 
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.compose.ui.test.onFirst
@@ -9,12 +10,15 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ActivityScenario
 
+import com.github.takahirom.roborazzi.ExperimentalRoborazziApi
 import com.github.takahirom.roborazzi.RoborazziOptions
 import com.github.takahirom.roborazzi.captureRoboImage
+import com.github.takahirom.roborazzi.captureScreenRoboImage
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 import io.github.ieswar23.buddyup.MainActivity
+import io.github.ieswar23.buddyup.data.repository.RequestsRepository
 import io.github.ieswar23.buddyup.data.repository.UserRepository
 import io.github.ieswar23.buddyup.domain.model.AgeRange
 import io.github.ieswar23.buddyup.domain.model.ThemeMode
@@ -37,7 +41,7 @@ import javax.inject.Inject
  * `./gradlew testDebugUnitTest` runs these as smoke tests without writing images;
  * `./gradlew recordRoborazziDebug` (re)writes the PNGs into `docs/screenshots/`.
  */
-@OptIn(ExperimentalTestApi::class)
+@OptIn(ExperimentalTestApi::class, ExperimentalRoborazziApi::class)
 @HiltAndroidTest
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -52,6 +56,9 @@ class AppScreenshotTest {
 
     @Inject
     lateinit var userRepository: UserRepository
+
+    @Inject
+    lateinit var requestsRepository: RequestsRepository
 
     private var scenario: ActivityScenario<MainActivity>? = null
 
@@ -132,6 +139,43 @@ class AppScreenshotTest {
         capture("07_profile_dark")
     }
 
+    @Test
+    fun icebreakers() {
+        seedCompletedProfile()
+        launch()
+        waitForSync()
+        // Waving back at Sneha makes a brand-new buddy with an empty chat.
+        runBlocking { requestsRepository.accept("p05") }
+        openTab("Friends")
+        waitForText("Sneha Kulkarni")
+        composeRule.onAllNodes(hasText("Sneha Kulkarni") and hasClickAction()).onFirst().performClick()
+        waitForText("Tap one to add it")
+        capture("08_icebreakers")
+    }
+
+    @Test
+    fun blockAndReport() {
+        seedCompletedProfile()
+        launch()
+        waitForSync()
+        openTab("Friends")
+        waitForText("Kavya Iyer")
+        composeRule.onAllNodes(hasText("Kavya Iyer") and hasClickAction()).onFirst().performClick()
+        waitForText("Brahmin's")
+        composeRule.onAllNodes(hasContentDescription("More options") and hasClickAction()).onFirst().performClick()
+        waitForText("Report Kavya")
+        composeRule.onAllNodes(hasText("Report Kavya") and hasClickAction()).onFirst().performClick()
+        waitForText("What happened?")
+        composeRule.onAllNodes(hasText("Inappropriate messages") and hasClickAction()).onFirst().performClick()
+        // The sheet lives in its own window, so capture the whole screen rather than the Compose root.
+        composeRule.mainClock.advanceTimeBy(1_000)
+        composeRule.waitForIdle()
+        captureScreenRoboImage(
+            filePath = "../docs/screenshots/09_block_report.png",
+            roborazziOptions = ROBORAZZI_OPTIONS,
+        )
+    }
+
     private fun seedCompletedProfile(theme: ThemeMode = ThemeMode.LIGHT) = runBlocking {
         userRepository.saveProfile(
             UserProfile(
@@ -176,7 +220,11 @@ class AppScreenshotTest {
         composeRule.waitForIdle()
         composeRule.onRoot().captureRoboImage(
             filePath = "../docs/screenshots/$name.png",
-            roborazziOptions = RoborazziOptions(recordOptions = RoborazziOptions.RecordOptions(resizeScale = 0.44)),
+            roborazziOptions = ROBORAZZI_OPTIONS,
         )
+    }
+
+    private companion object {
+        val ROBORAZZI_OPTIONS = RoborazziOptions(recordOptions = RoborazziOptions.RecordOptions(resizeScale = 0.44))
     }
 }

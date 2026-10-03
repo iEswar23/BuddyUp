@@ -19,17 +19,24 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.WorkOutline
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,17 +44,24 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import io.github.ieswar23.buddyup.R
 import io.github.ieswar23.buddyup.ui.components.CompatibilityRing
 import io.github.ieswar23.buddyup.ui.components.InterestChip
+import io.github.ieswar23.buddyup.ui.safety.SafetyAction
+import io.github.ieswar23.buddyup.ui.safety.SafetyMenuItems
 import io.github.ieswar23.buddyup.ui.theme.OnlineGreen
 import io.github.ieswar23.buddyup.ui.theme.gradientFor
 import io.github.ieswar23.buddyup.util.Formatters
 
-/** The full Discover card: gradient hero with initials + match ring, then details and interests. */
+/**
+ * The full Discover card: gradient hero with initials + match ring, then details and interests.
+ * When [onSafetyAction] is set, an overflow menu next to the name offers "Block" and "Report".
+ */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ProfileCard(
@@ -55,6 +69,7 @@ fun ProfileCard(
     now: Long,
     modifier: Modifier = Modifier,
     swipeProgress: Float = 0f,
+    onSafetyAction: ((SafetyAction) -> Unit)? = null,
 ) {
     val person = card.person
     val (start, end) = gradientFor(person.id)
@@ -150,21 +165,24 @@ fun ProfileCard(
                     .padding(horizontal = 20.dp, vertical = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                Row(verticalAlignment = Alignment.Bottom) {
-                    Text(
-                        text = person.name,
-                        style = MaterialTheme.typography.headlineSmall,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f, fill = false),
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        text = person.age.toString(),
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Normal,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Row(verticalAlignment = Alignment.Bottom, modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = person.name,
+                            style = MaterialTheme.typography.headlineSmall,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.weight(1f, fill = false),
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = person.age.toString(),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Normal,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    if (onSafetyAction != null) CardOverflowMenu(firstName = person.firstName, onSelect = onSafetyAction)
                 }
                 MetaRow(
                     icon = { Icon(Icons.Outlined.LocationOn, null, Modifier.size(16.dp)) },
@@ -192,6 +210,26 @@ fun ProfileCard(
                         InterestChip(interest = interest, highlighted = interest in shared)
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CardOverflowMenu(firstName: String, onSelect: (SafetyAction) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    Box {
+        IconButton(onClick = { expanded = true }, modifier = Modifier.size(32.dp)) {
+            Icon(
+                Icons.Filled.MoreVert,
+                contentDescription = stringResource(R.string.chat_more),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            SafetyMenuItems(firstName) { action ->
+                expanded = false
+                onSelect(action)
             }
         }
     }

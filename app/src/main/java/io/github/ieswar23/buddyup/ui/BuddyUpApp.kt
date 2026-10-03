@@ -31,6 +31,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -41,6 +42,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import io.github.ieswar23.buddyup.R
 import io.github.ieswar23.buddyup.data.simulation.AppEvent
 import io.github.ieswar23.buddyup.ui.chat.ChatScreen
 import io.github.ieswar23.buddyup.ui.discover.DiscoverScreen
@@ -64,6 +66,7 @@ fun BuddyUpApp(
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = TopLevelDestination.fromRoute(backStackEntry?.destination?.route)
     val snackbarHostState = remember { SnackbarHostState() }
+    val resources = LocalContext.current.resources
     val startDestination = remember { if (onboardingComplete) Screen.Discover.route else Screen.Onboarding.route }
 
     LaunchedEffect(viewModel) {
@@ -78,6 +81,19 @@ fun BuddyUpApp(
                     if (result == SnackbarResult.ActionPerformed) {
                         navController.navigate(Screen.Chat.createRoute(event.personId))
                     }
+                }
+                is AppEvent.Blocked -> {
+                    snackbarHostState.currentSnackbarData?.dismiss()
+                    val message = resources.getString(
+                        if (event.reported) R.string.blocked_and_reported_snackbar else R.string.blocked_snackbar,
+                        event.firstName,
+                    )
+                    val result = snackbarHostState.showSnackbar(
+                        message = message,
+                        actionLabel = resources.getString(R.string.undo),
+                        duration = SnackbarDuration.Long,
+                    )
+                    if (result == SnackbarResult.ActionPerformed) viewModel.undoBlock(event.personId)
                 }
             }
         }

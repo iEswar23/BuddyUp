@@ -80,6 +80,15 @@
     <string name="chat_typing">typing…</string>
     <string name="chat_online">Online</string>
     <string name="chat_empty">Break the ice! Ask about one of your shared interests.</string>
+    <string name="chat_more">More options</string>
+    <string name="chat_view_profile">View profile</string>
+    <string name="icebreakers_title">Icebreakers</string>
+    <string name="icebreakers_shared">Icebreakers · you both like %1$s</string>
+    <string name="icebreakers_hint">Tap one to add it to your message. You can edit it before sending.</string>
+    <string name="icebreakers_refresh">Show other icebreakers</string>
+    <string name="icebreakers_prompt">Need an icebreaker?</string>
+    <string name="icebreakers_hide">Hide icebreakers</string>
+    <string name="chat_empty_no_shared">Say hi to %1$s! Not sure where to start? Try one of these.</string>
 
     <!-- Events -->
     <string name="events_title">Meetups</string>
@@ -103,4 +112,33 @@
     <string name="settings_community">Community guidelines</string>
     <string name="about_body">BuddyUp is a friendship app for meeting people nearby who share your interests. Everything in this build runs offline with a simulated backend.</string>
     <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Safety -->
+    <string name="settings_safety">Safety</string>
+    <string name="action_block">Block %1$s</string>
+    <string name="action_report">Report %1$s</string>
+    <string name="action_unblock">Unblock</string>
+    <string name="block_title">Block %1$s?</string>
+    <string name="block_body">%1$s won\'t appear in Discover, Waves or Friends, and your chat will be hidden. They won\'t be notified, and you can unblock them anytime from Profile.</string>
+    <string name="block_confirm">Block</string>
+    <string name="report_title">Report %1$s</string>
+    <string name="report_body">Reports are anonymous and help keep BuddyUp friendly. %1$s will also be blocked, and you can unblock them anytime from Profile.</string>
+    <string name="report_reason_label">What happened?</string>
+    <string name="report_add_note">Add details (optional)</string>
+    <string name="report_note_label">Anything else we should know?</string>
+    <string name="report_note_counter">%1$d/%2$d</string>
+    <string name="report_submit">Report &amp; block</string>
+    <string name="blocked_snackbar">%1$s is blocked</string>
+    <string name="blocked_and_reported_snackbar">%1$s is blocked and reported. Thanks for flagging it 🙏</string>
+    <string name="blocked_title">Blocked people</string>
+    <string name="blocked_subtitle">They can\'t see your profile or message you. Unblocking brings back any connection and chat you had.</string>
+    <string name="blocked_empty">You haven\'t blocked anyone. If someone makes you uncomfortable, block them from their profile or your chat.</string>
+    <string name="blocked_count_none">No one blocked</string>
+    <string name="blocked_reported">Reported · %1$s</string>
+    <string name="blocked_on">Blocked · %1$s</string>
+    <plurals name="blocked_count">
+        <item quantity="one">%d person blocked</item>
+        <item quantity="other">%d people blocked</item>
+    </plurals>
 </resources>

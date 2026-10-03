@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.ieswar23.buddyup.data.repository.FriendsRepository
 import io.github.ieswar23.buddyup.data.repository.PeopleRepository
 import io.github.ieswar23.buddyup.data.repository.RequestsRepository
+import io.github.ieswar23.buddyup.data.repository.SafetyRepository
 import io.github.ieswar23.buddyup.data.repository.UserRepository
 import io.github.ieswar23.buddyup.data.simulation.AppEvent
 import io.github.ieswar23.buddyup.data.simulation.AppEventBus
@@ -38,6 +39,7 @@ class MainViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository,
     requestsRepository: RequestsRepository,
     friendsRepository: FriendsRepository,
+    private val safetyRepository: SafetyRepository,
     eventBus: AppEventBus,
 ) : ViewModel() {
 
@@ -54,9 +56,17 @@ class MainViewModel @Inject constructor(
         AppChromeState(settings.themeMode, incoming, unread)
     }.stateIn(viewModelScope, SharingStarted.Eagerly, AppChromeState())
 
-    /** In-app alerts, suppressed when the user turned them off in settings. */
-    val alerts: Flow<AppEvent> = eventBus.events.filter {
-        userRepository.settings.first().notificationsEnabled
+    /**
+     * In-app alerts. "Waved back" alerts are suppressed when the user turned them off in settings;
+     * confirmations of the user's own actions (like blocking) always show.
+     */
+    val alerts: Flow<AppEvent> = eventBus.events.filter { event ->
+        event !is AppEvent.WavedBack || userRepository.settings.first().notificationsEnabled
+    }
+
+    /** Snackbar "Undo" after blocking someone. */
+    fun undoBlock(personId: String) {
+        viewModelScope.launch { safetyRepository.unblock(personId) }
     }
 
     init {

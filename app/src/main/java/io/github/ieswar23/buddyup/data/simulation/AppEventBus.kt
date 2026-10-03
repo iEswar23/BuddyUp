@@ -9,6 +9,9 @@ import javax.inject.Singleton
 sealed interface AppEvent {
     /** Someone the user waved at waved back — they are now friends. */
     data class WavedBack(val personId: String, val firstName: String) : AppEvent
+
+    /** The user blocked someone (and maybe reported them) — confirmed with an "Undo" snackbar. */
+    data class Blocked(val personId: String, val firstName: String, val reported: Boolean) : AppEvent
 }
 
 /** App-wide one-off events (e.g. in-app alerts) that outlive any single screen. */

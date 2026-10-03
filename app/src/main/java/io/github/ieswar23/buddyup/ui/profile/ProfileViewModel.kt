@@ -6,8 +6,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.ieswar23.buddyup.data.repository.FriendsRepository
 import io.github.ieswar23.buddyup.data.repository.MeetupRepository
 import io.github.ieswar23.buddyup.data.repository.RequestsRepository
+import io.github.ieswar23.buddyup.data.repository.SafetyRepository
 import io.github.ieswar23.buddyup.data.repository.UserRepository
 import io.github.ieswar23.buddyup.domain.model.AppSettings
+import io.github.ieswar23.buddyup.domain.model.BlockedPerson
 import io.github.ieswar23.buddyup.domain.model.ThemeMode
 import io.github.ieswar23.buddyup.domain.model.UserProfile
 import kotlinx.coroutines.flow.SharingStarted
@@ -26,6 +28,7 @@ data class ProfileUiState(
     val settings: AppSettings = AppSettings(),
     val stats: ProfileStats = ProfileStats(),
     val memberSince: Long? = null,
+    val blocked: List<BlockedPerson> = emptyList(),
 )
 
 @HiltViewModel
@@ -34,6 +37,7 @@ class ProfileViewModel @Inject constructor(
     friendsRepository: FriendsRepository,
     requestsRepository: RequestsRepository,
     meetupRepository: MeetupRepository,
+    private val safetyRepository: SafetyRepository,
 ) : ViewModel() {
 
     private val stats = combine(
@@ -47,8 +51,16 @@ class ProfileViewModel @Inject constructor(
         userRepository.settings,
         userRepository.memberSince,
         stats,
-    ) { profile, settings, since, stats ->
-        ProfileUiState(isLoading = false, profile = profile, settings = settings, stats = stats, memberSince = since)
+        safetyRepository.observeBlocked(),
+    ) { profile, settings, since, stats, blocked ->
+        ProfileUiState(
+            isLoading = false,
+            profile = profile,
+            settings = settings,
+            stats = stats,
+            memberSince = since,
+            blocked = blocked,
+        )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ProfileUiState())
 
     fun setThemeMode(mode: ThemeMode) {
@@ -57,5 +69,9 @@ class ProfileViewModel @Inject constructor(
 
     fun setNotificationsEnabled(enabled: Boolean) {
         viewModelScope.launch { userRepository.setNotificationsEnabled(enabled) }
+    }
+
+    fun unblock(personId: String) {
+        viewModelScope.launch { safetyRepository.unblock(personId) }
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
+import androidx.compose.material.icons.outlined.Block
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Info
@@ -56,6 +57,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -68,6 +70,7 @@ import io.github.ieswar23.buddyup.R
 import io.github.ieswar23.buddyup.domain.model.SupportedCities
 import io.github.ieswar23.buddyup.domain.model.ThemeMode
 import io.github.ieswar23.buddyup.ui.components.InterestChip
+import io.github.ieswar23.buddyup.ui.safety.BlockedPeopleSheet
 import io.github.ieswar23.buddyup.ui.theme.AvatarGradients
 import io.github.ieswar23.buddyup.util.Formatters
 
@@ -80,6 +83,7 @@ fun ProfileScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     var showAbout by rememberSaveable { mutableStateOf(false) }
     var showGuidelines by rememberSaveable { mutableStateOf(false) }
+    var showBlocked by rememberSaveable { mutableStateOf(false) }
     val profile = state.profile
     val city = SupportedCities.byName(profile.city)
 
@@ -200,6 +204,19 @@ fun ProfileScreen(
             NavigationRow(Icons.Outlined.Info, stringResource(R.string.settings_about)) { showAbout = true }
         }
 
+        SectionTitle(stringResource(R.string.settings_safety))
+        SettingsCard {
+            NavigationRow(
+                icon = Icons.Outlined.Block,
+                title = stringResource(R.string.blocked_title),
+                supporting = if (state.blocked.isEmpty()) {
+                    stringResource(R.string.blocked_count_none)
+                } else {
+                    pluralStringResource(R.plurals.blocked_count, state.blocked.size, state.blocked.size)
+                },
+            ) { showBlocked = true }
+        }
+
         Text(
             text = "BuddyUp v${BuildConfig.VERSION_NAME} · Made for making friends 🧡",
             style = MaterialTheme.typography.labelSmall,
@@ -216,6 +233,14 @@ fun ProfileScreen(
             title = stringResource(R.string.settings_about),
             body = stringResource(R.string.about_body) + "\n\nVersion ${BuildConfig.VERSION_NAME}",
             onDismiss = { showAbout = false },
+        )
+    }
+    if (showBlocked) {
+        BlockedPeopleSheet(
+            blocked = state.blocked,
+            now = System.currentTimeMillis(),
+            onUnblock = { viewModel.unblock(it.person.id) },
+            onDismiss = { showBlocked = false },
         )
     }
     if (showGuidelines) {
@@ -298,11 +323,12 @@ private fun ThemeSelector(selected: ThemeMode, onSelected: (ThemeMode) -> Unit) 
 }
 
 @Composable
-private fun NavigationRow(icon: ImageVector, title: String, onClick: () -> Unit) {
+private fun NavigationRow(icon: ImageVector, title: String, supporting: String? = null, onClick: () -> Unit) {
     ListItem(
         modifier = Modifier.clickableRow(onClick),
         leadingContent = { Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
         headlineContent = { Text(title, style = MaterialTheme.typography.titleSmall) },
+        supportingContent = supporting?.let { { Text(it) } },
         trailingContent = { Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = null) },
         colors = ListItemDefaults.colors(containerColor = Color.Transparent),
     )
