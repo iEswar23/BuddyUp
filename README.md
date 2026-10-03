@@ -2,6 +2,7 @@
 
 **Find your people, nearby.** BuddyUp is a friendship app that helps you meet friendly people in your city who share your interests — for coffee walks, board-game nights and weekend hikes. Not a dating app: just good company.
 
+[![Android CI](https://github.com/iEswar23/BuddyUp/actions/workflows/android-ci.yml/badge.svg)](https://github.com/iEswar23/BuddyUp/actions/workflows/android-ci.yml)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?logo=kotlin&logoColor=white)
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?logo=jetpackcompose&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-MVVM-FF7A59)
